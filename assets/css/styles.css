@@ -1,96 +1,63 @@
-/*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
-/*=============== VARIABLES CSS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+/*----- VARIABLES CSS Y SASS -----*/
+/*Varibles sass*/
+/*Variables css*/
+/*Colores*/
 :root {
-  --header-height: 3.5rem;
+  --first-color: #4E1116;
+  --black-color: #000;
+  --white-color: #FFF;
+}
 
-  /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  /*
-        Purple: hsl(250, 66%, 75%)
-        Blue: hsl(207, 90%, 72%)
-        Pink: hsl(356, 66%, 75%)
-        Teal: hsl(174, 63%, 62%)
-  */
-  --first-hue: 250;
-  --sat: 66%;
-  --lig: 75%;
-  --second-hue: 219;
-  --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
-  --first-color-alt: hsl(var(--first-hue), var(--sat), 71%); /* -4% */
-  --title-color: hsl(var(--second-hue), 15%, 95%);
-  --text-color: hsl(var(--second-hue), 8%, 75%);
-  --text-color-light: hsl(var(--second-hue), 4%, 55%);
-  --body-color: hsl(var(--second-hue), 48%, 8%);
-  --container-color: hsl(var(--second-hue), 32%, 12%);
-
-  /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
+/*Fuente y tipografia*/
+:root {
   --body-font: 'Poppins', sans-serif;
-  --biggest-font-size: 1.75rem;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
-  --tiny-font-size: .625rem;
+  --h1-font-size: 2.5rem;
+  --h2-font-size: 1rem;
+  --normal-font-size: 0.93rem;
+  --small-font-size: 0.81rem;
+}
 
-  /*========== Font weight ==========*/
-  --font-medium: 500;
-  --font-semibold: 600;
+@media screen and (min-width: 768px) {
+  :root {
+    --h1-font-size: 4.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 1.37rem;
+  }
+}
 
-  /*========== z index ==========*/
+/*z index*/
+:root {
+  --z-back: -10;
+  --z-normal: 1;
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
 }
 
-/* Responsive typography */
-@media screen and (min-width: 968px) {
-  :root {
-    --biggest-font-size: 2.5rem;
-    --h1-font-size: 2.25rem;
-    --h2-font-size: 1.5rem;
-    --h3-font-size: 1.25rem;
-    --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
-  }
-}
-
-/*=============== BASE ===============*/
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body,
-button,
-input,
-textarea {
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
+/*----- BASE -----*/
+*, ::before, ::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-  background-color: var(--body-color);
-  color: var(--text-color);
-  transition: .4s; /* for light mode animation */
+  margin: 3rem 0 0 0;
+  font-family: var(--body-font);
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-weight: 700;
+  overflow: hidden;
 }
 
-h1, h2, h3 {
-  color: var(--title-color);
-  font-weight: var(--font-semibold);
+h1, h2 {
+  margin: 0;
 }
 
 ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -98,122 +65,261 @@ a {
   text-decoration: none;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
 img {
   max-width: 100%;
   height: auto;
 }
 
-/*=============== THEME ===============*/
-
-
-/*========== Variables Dark theme ==========*/
-
-
-/*========== 
-    Color changes in some parts of 
-    the website, in light theme
-==========*/
-
-
-/*=============== REUSABLE CSS CLASSES ===============*/
-.container {
-  max-width: 968px;
+/*----- LAYOUT -----*/
+.bd-grid {
+  max-width: 1200px;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
-.grid {
-  display: grid;
-  gap: 1.25rem;
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--black-color);
 }
 
-.main {
-  overflow: hidden;
+/*----- PAGES -----*/
+/*Nav*/
+.nav {
+  height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
 }
 
-.section {
-  padding: 4.5rem 0 1rem;
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--black-color)), to(var(--first-color)));
+    background-image: linear-gradient(var(--black-color), var(--first-color));
+    width: 100%;
+    height: 45%;
+    padding: 1.5rem;
+    border-radius: 0 0 1rem 1rem;
+    -webkit-transition: .5s;
+    transition: .5s;
+  }
 }
 
-.section__title, 
-.section__subtitle {
+.nav__list {
   text-align: center;
 }
 
-.section__title {
-  font-size: var(--h2-font-size);
-  color: var(--first-color);
+.nav__item {
   margin-bottom: 2rem;
 }
 
-.section__subtitle {
-  display: block;
-  font-size: var(--smaller-font-size);
-  color: var(--text-color-light);
+.nav__link {
+  color: var(--text-color);
 }
 
-/*=============== HEADER & NAV===============*/
+.nav__link:hover {
+  position: relative;
+}
 
+.nav__link:hover::after {
+  position: absolute;
+  content: '';
+  width: 1.5rem;
+  height: 0.1875rem;
+  left: 0.125rem;
+  top: 2.125rem;
+  background-color: var(--first-color);
+}
 
-/* Active link */
+.nav__logo {
+  font-size: var(--normal-font-size);
+  color: var(--white-color);
+}
 
+.nav__toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
-/* Change background header */
+/*Aparecer menu*/
+.show {
+  top: 3rem;
+}
 
+/*Home*/
+.l-main {
+  height: calc(100vh - 3rem);
+  background-color: var(--black-color);
+}
 
-/*=============== HOME ===============*/
+.home {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content;
+      grid-template-rows: max-content max-content;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  row-gap: 2.3rem;
+  height: 100%;
+  font-weight: 700;
+}
 
+.home__information {
+  padding-left: 1.5rem;
+  border-left: 5px solid var(--white-color);
+  z-index: var(--z-tooltip);
+}
 
-/*=============== BUTTONS ===============*/
+.home__pressent {
+  font-size: var(--small-font-size);
+}
 
+.home__title {
+  font-size: var(--h1-font-size);
+}
 
-/*=============== ABOUT ===============*/
+.home__skill {
+  font-size: var(--h2-font-size);
+}
 
+.home__button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: .75rem;
+  color: var(--white-color);
+  padding: .625rem 1rem;
+  border-radius: .25rem;
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--black-color)), to(var(--first-color)));
+  background-image: linear-gradient(to right, var(--black-color), var(--first-color));
+}
 
-/*=============== SKILLS ===============*/
+.home__img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 291px;
+  z-index: var(--z-normal);
+}
 
+.home__social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 1rem;
+}
 
-/*=============== SERVICES ===============*/
+.home__social-icon {
+  margin-bottom: 2rem;
+  font-size: 1.33rem;
+  cursor: pointer;
+}
 
+.home__social-icon:hover {
+  color: var(--first-color);
+}
 
-/* Services modal */
+/*----- MEDIA QUERIES -----*/
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+  .l-main {
+    height: 100vh;
+  }
+  .nav {
+    height: 4rem;
+  }
+  .nav__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0;
+  }
+  .nav__item {
+    margin-left: 3rem;
+    margin-bottom: 0;
+  }
+  .nav__toggle, .nav__close {
+    display: none;
+  }
+  .nav__link {
+    text-transform: initial;
+  }
+  .home {
+    -ms-grid-rows: max-content 20px;
+        grid-template-rows: -webkit-max-content 20px;
+        grid-template-rows: max-content 20px;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  .home__information {
+    margin-top: 2rem;
+  }
+  .home__social {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding-top: 8rem;
+    padding-bottom: 0;
+  }
+  .home__social-icon {
+    margin-right: 2rem;
+    margin-bottom: 0;
+  }
+  .home__img {
+    width: 553px;
+    right: 5%;
+  }
+}
 
+@media screen and (min-width: 1200px) {
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
-/*Active modal*/
+/*ANIMATE*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+}
 
+.first {
+  background-color: var(--first-color);
+}
 
-/*=============== WORK ===============*/
+.second {
+  background-color: var(--first-color);
+  left: 33.3%;
+}
 
-
-/* Active item work*/
-
-
-/*=============== TESTIMONIAL ===============*/
-
-
-/* Swiper class */
-
-
-/*=============== CONTACT ===============*/
-
-
-/*=============== FOOTER ===============*/
-
-
-/*=============== SCROLL BAR ===============*/
-
-
-/*=============== BREAKPOINTS ===============*/
-/* For small devices */
-
-
-/* For medium devices */
-
-
-/* For large devices */
+.third {
+  background-color: var(--first-color);
+  left: 66.6%;
+}
